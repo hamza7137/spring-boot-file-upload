@@ -29,4 +29,10 @@ public class AttachmentServiceImpl implements AttachmentService{
             throw new Exception("Could not save File : " + fileName);
         }
     }
+
+    @Override
+    public Attachment getAttachment(String fileId) throws Exception
+    {
+        return attachmentRepository.findById(fileId).orElseThrow(() -> new Exception("File not found with Id: " + fileId));
+    }
 }
